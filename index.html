@@ -9,6 +9,8 @@
 <body>
     <script>
         function game() {
+            let cumPlayerScore = 0;
+            let cumComputerScore = 0;
             for (let i = 0; i<5; i++) {
                 let choiceArray = ["rock","paper","scissors"];
                 //
@@ -29,19 +31,40 @@
                 const playerSelection = getPlayerChoice();
                 const computerSelection = getComputerChoice();
                 let roundResult;
+                let playerScore;
+                let computerScore;
                 function playRound(playerSelection,computerSelection) {
                     if (playerSelection === computerSelection) {
                         roundResult = "It\'s a Tie!";
+                        playerScore = 0;
+                        computerScore = 0;
                     } else if (playerSelection === "rock" && computerSelection === "scissors" || playerSelection === "paper" && computerSelection === "rock" || playerSelection === "scissors" && computerSelection === "paper") {
                         roundResult = "You Win! " + playerSelection + " beats " + computerSelection + ".";
+                        playerScore = 1;
+                        computerScore = 0;
                     } else {
                         roundResult = "You Lose! " + computerSelection + " beats " + playerSelection + ".";
+                        playerScore = 0;
+                        computerScore = 1;
                     }
                     return roundResult;
                 }
                 //
                 console.log(playRound(playerSelection,computerSelection));
+                cumPlayerScore += playerScore;
+                cumComputerScore += computerScore;  
+                let scoreMessage = "Human: " + cumPlayerScore + ", Computer: " + cumComputerScore;             
+                console.log(scoreMessage);
             }
+            let finalResult
+            if (cumPlayerScore === cumComputerScore) {
+                finalResult = "After 5 rounds, it\'s a tie!";
+            } else if (cumPlayerScore > cumComputerScore) {
+                finalResult = "After 5 rounds, you have won!";
+            } else {
+                finalResult = "After 5 rounds, you have lost!"
+            }
+            console.log(finalResult);
         }
         console.log(game());
     </script>

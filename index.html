@@ -11,9 +11,11 @@
         function game() {
             for (let i = 0; i<5; i++) {
                 let choiceArray = ["rock","paper","scissors"];
+                //
                 function getComputerChoice() {
                     return choiceArray[Math.floor(Math.random()*3)];
                 }
+                //
                 function getPlayerChoice() {
                     let playerInput = prompt("Rock, Paper, or Scissors?","").toLowerCase();
                     if (choiceArray.includes(playerInput)) {
@@ -23,6 +25,7 @@
                         return getPlayerChoice();
                     }  
                 }
+                //
                 const playerSelection = getPlayerChoice();
                 const computerSelection = getComputerChoice();
                 let roundResult;
@@ -36,6 +39,7 @@
                     }
                     return roundResult;
                 }
+                //
                 console.log(playRound(playerSelection,computerSelection));
             }
         }

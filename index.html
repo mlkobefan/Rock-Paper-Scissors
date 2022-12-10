@@ -16,7 +16,7 @@
                 }
                 function getPlayerChoice() {
                     let playerInput = prompt("Rock, Paper, or Scissors?","").toLowerCase();
-                    if (playerInput === "rock" || playerInput === "paper" || playerInput === "scissors") { 
+                    if (choiceArray.includes(playerInput)) {
                         return playerInput;
                     } else {
                         alert("Invalid option. Please try again.");
